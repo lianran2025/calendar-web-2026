@@ -129,10 +129,28 @@ a{color:inherit}
   }
   .wd{color:var(--muted)}
   .cell{
-    min-height:52px;
-    aspect-ratio:1 / 0.95;
-    border-radius:9px;
+    min-height:40px;
+    aspect-ratio:1 / 0.62;
+    border-radius:7px;
     margin:1px;
+    padding:4px 4px 4px;
+  }
+  .day{
+    font-size:12px;
+    padding-right:40px;
+  }
+  .tag{
+    left:4px;
+    bottom:4px;
+    font-size:8px;
+    padding:1px 4px;
+  }
+  .mark{
+    right:4px;
+    top:4px;
+    width:14px;
+    height:14px;
+    font-size:10px;
   }
   .monthNote{color:var(--muted)}
   .btn{display:none}

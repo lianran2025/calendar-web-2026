@@ -61,7 +61,6 @@ a{color:inherit}
 .cell:nth-child(7n){border-right:none}
 .cell.empty{cursor:default;background:rgba(0,0,0,.06)}
 .day{font-weight:800;font-size:15px}
-.lunar{font-size:11px;color:var(--muted);margin-top:2px}
 .tag{
   position:absolute;
   left:8px;
@@ -95,7 +94,11 @@ a{color:inherit}
 
 @media print {
   @page { size: A4 portrait; margin: 10mm; }
-  body{background:#fff;color:#111}
+  *{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body{background:var(--bg) !important;color:var(--text) !important}
   .container{max-width:none;padding:0}
   .no-print{display:none !important}
   .print-grid{display:block}
@@ -103,16 +106,16 @@ a{color:inherit}
     break-inside: avoid;
     page-break-inside: avoid;
     margin-bottom:10mm;
-    border:1px solid #ddd;
-    box-shadow:none;
-    background:#fff;
-    color:#111;
+    border: 1px solid rgba(36,48,66,.9);
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    background: rgba(17,24,39,.9);
+    color:var(--text);
   }
   .print-card:nth-of-type(2n){
     break-after: page;
     page-break-after: always;
   }
-  .wd,.lunar{color:#333}
+  .wd{color:var(--muted)}
   .cell{min-height:62px}
   .btn{display:none}
 }

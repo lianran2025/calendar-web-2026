@@ -7,11 +7,6 @@ const STORAGE_KEY = 'calendar-2026-marks-v1';
 
 type Marks = Record<string, boolean>;
 
-const lunarFormatter = new Intl.DateTimeFormat('zh-CN-u-ca-chinese', {
-  month: 'short',
-  day: 'numeric',
-});
-
 function monthNameCN(m: number) {
   return `${m} 月`;
 }
@@ -25,13 +20,6 @@ function safeParse(json: string | null): Marks {
   } catch {
     return {};
   }
-}
-
-function lunarText(ymd: string) {
-  const [y, m, d] = ymd.split('-').map(Number);
-  const date = new Date(y, m - 1, d);
-  const text = lunarFormatter.format(date);
-  return text.replace(' ', '');
 }
 
 export default function Page() {
@@ -94,7 +82,7 @@ export default function Page() {
     <main className="container">
       <div className="header no-print">
         <div>
-          <div className="h1">2026 年挂历（农历 + 双薪/三薪）</div>
+          <div className="h1">2026 年挂历（双薪/三薪）</div>
           <div className="sub">
             日历从 2 月开始显示。点击任意日期可“打勾标记”。已标记：{counts.total} 天；其中节假日加班日：{counts.specialMarked} 天。
           </div>
@@ -147,7 +135,7 @@ function MonthCard({
         <div className="title">
           {monthNameCN(month)} <span>{YEAR}</span>
         </div>
-        <div style={{ color: 'var(--muted)', fontSize: 12 }}>含农历显示</div>
+        <div style={{ color: 'var(--muted)', fontSize: 12 }}>点击日期打勾</div>
       </div>
 
       <div className="cal">
@@ -176,7 +164,6 @@ function MonthCard({
               style={{ outline: marked ? '2px solid rgba(96,165,250,.55)' : 'none', outlineOffset: -2 }}
             >
               <div className="day">{cell.day}</div>
-              <div className="lunar">{lunarText(cell.ymd)}</div>
               {cell.special && (
                 <div className={`tag ${cell.special.pay === '双薪' ? 'double' : 'triple'}`}>
                   {cell.special.pay}·{cell.special.festival}

@@ -47,6 +47,12 @@ a{color:inherit}
 .cardTop{display:flex;align-items:baseline;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(36,48,66,.9)}
 .cardTop .title{font-weight:800}
 .cardTop .title span{font-weight:700;color:var(--muted);margin-left:8px;font-size:12px}
+.monthNote{
+  color:var(--muted);
+  font-size:11px;
+  text-align:right;
+  margin-left:12px;
+}
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));}
 .wd{padding:8px 0;text-align:center;color:var(--muted);font-size:12px;border-bottom:1px solid rgba(36,48,66,.65)}
 .cell{
@@ -66,9 +72,9 @@ a{color:inherit}
   right:6px;
   top:6px;
   max-width:calc(100% - 26px);
-  font-size:9px;
+  font-size:10px;
   line-height:1.1;
-  padding:1px 4px;
+  padding:1px 6px;
   border-radius:8px;
   border:1px solid rgba(255,255,255,.25);
   color:#111827;
@@ -118,5 +124,6 @@ a{color:inherit}
   }
   .wd{color:var(--muted)}
   .cell{min-height:58px}
+  .monthNote{color:var(--muted)}
   .btn{display:none}
 }

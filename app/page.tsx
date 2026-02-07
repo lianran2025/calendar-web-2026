@@ -128,6 +128,15 @@ function MonthCard({
   onToggle: (ymd: string) => void;
 }) {
   const cells = useMemo(() => buildMonth(YEAR, month), [month]);
+  const monthHolidayNote = useMemo(() => {
+    const pairs = new Set<string>();
+    for (const cell of cells) {
+      if (!cell?.special) continue;
+      pairs.add(`${cell.special.pay}：${cell.special.festival}`);
+    }
+    if (pairs.size === 0) return '';
+    return Array.from(pairs).join(' ｜ ');
+  }, [cells]);
 
   return (
     <div className="card print-card">
@@ -135,6 +144,7 @@ function MonthCard({
         <div className="title">
           {monthNameCN(month)} <span>{YEAR}</span>
         </div>
+        <div className="monthNote">{monthHolidayNote}</div>
       </div>
 
       <div className="cal">
@@ -165,7 +175,7 @@ function MonthCard({
               <div className="day">{cell.day}</div>
               {cell.special && (
                 <div className={`tag ${cell.special.pay === '双薪' ? 'double' : 'triple'}`}>
-                  {cell.special.pay}·{cell.special.festival}
+                  {cell.special.pay}
                 </div>
               )}
               {marked && <div className="mark">✓</div>}

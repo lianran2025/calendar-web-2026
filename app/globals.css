@@ -52,6 +52,10 @@ a{color:inherit}
   font-size:11px;
   text-align:right;
   margin-left:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:66%;
 }
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));}
 .wd{padding:8px 0;text-align:center;color:var(--muted);font-size:12px;border-bottom:1px solid rgba(36,48,66,.65)}
@@ -125,10 +129,10 @@ a{color:inherit}
   }
   .wd{color:var(--muted)}
   .cell{
-    min-height:60px;
+    min-height:52px;
     aspect-ratio:1 / 0.95;
     border-radius:9px;
-    margin:2px;
+    margin:1px;
   }
   .monthNote{color:var(--muted)}
   .btn{display:none}

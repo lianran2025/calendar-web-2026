@@ -22,6 +22,13 @@ function safeParse(json: string | null): Marks {
   }
 }
 
+function shortFestivalName(name: string) {
+  if (name.startsWith('春节（') && name.endsWith('）')) {
+    return name.slice(3, -1);
+  }
+  return name;
+}
+
 export default function Page() {
   const [marks, setMarks] = useState<Marks>({});
 
@@ -129,13 +136,18 @@ function MonthCard({
 }) {
   const cells = useMemo(() => buildMonth(YEAR, month), [month]);
   const monthHolidayNote = useMemo(() => {
-    const pairs = new Set<string>();
+    const grouped: Record<'双薪' | '三薪', string[]> = { 双薪: [], 三薪: [] };
     for (const cell of cells) {
       if (!cell?.special) continue;
-      pairs.add(`${cell.special.pay}：${cell.special.festival}`);
+      const festival = shortFestivalName(cell.special.festival);
+      if (!grouped[cell.special.pay].includes(festival)) {
+        grouped[cell.special.pay].push(festival);
+      }
     }
-    if (pairs.size === 0) return '';
-    return Array.from(pairs).join(' ｜ ');
+    const sections: string[] = [];
+    if (grouped['三薪'].length > 0) sections.push(`三薪：${grouped['三薪'].join('、')}`);
+    if (grouped['双薪'].length > 0) sections.push(`双薪：${grouped['双薪'].join('、')}`);
+    return sections.join(' ｜ ');
   }, [cells]);
 
   return (

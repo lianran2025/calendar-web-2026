@@ -135,7 +135,6 @@ function MonthCard({
         <div className="title">
           {monthNameCN(month)} <span>{YEAR}</span>
         </div>
-        <div style={{ color: 'var(--muted)', fontSize: 12 }}>点击日期打勾</div>
       </div>
 
       <div className="cal">

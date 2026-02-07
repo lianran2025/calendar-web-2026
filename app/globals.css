@@ -51,8 +51,8 @@ a{color:inherit}
 .wd{padding:8px 0;text-align:center;color:var(--muted);font-size:12px;border-bottom:1px solid rgba(36,48,66,.65)}
 .cell{
   position:relative;
-  min-height:70px;
-  padding:8px 8px 8px;
+  min-height:92px;
+  padding:8px 8px 10px;
   border-right:1px solid rgba(36,48,66,.35);
   border-bottom:1px solid rgba(36,48,66,.35);
   cursor:pointer;
@@ -67,14 +67,14 @@ a{color:inherit}
   bottom:6px;
   max-width:calc(100% - 16px);
   font-size:10px;
-  padding:1px 5px;
-  border-radius:999px;
+  line-height:1.2;
+  padding:2px 6px;
+  border-radius:10px;
   border:1px solid rgba(255,255,255,.25);
   color:#111827;
   font-weight:800;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  white-space:normal;
+  word-break:break-all;
 }
 .tag.double{background:var(--double)}
 .tag.triple{background:var(--triple)}
@@ -116,6 +116,6 @@ a{color:inherit}
     page-break-after: always;
   }
   .wd{color:var(--muted)}
-  .cell{min-height:62px}
+  .cell{min-height:78px}
   .btn{display:none}
 }

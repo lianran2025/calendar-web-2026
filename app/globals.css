@@ -57,20 +57,21 @@ a{color:inherit}
 .wd{padding:8px 0;text-align:center;color:var(--muted);font-size:12px;border-bottom:1px solid rgba(36,48,66,.65)}
 .cell{
   position:relative;
-  min-height:62px;
+  min-height:66px;
+  aspect-ratio:1 / 0.95;
   padding:7px 6px 6px;
-  border-right:1px solid rgba(36,48,66,.35);
-  border-bottom:1px solid rgba(36,48,66,.35);
+  border:1px solid rgba(36,48,66,.45);
+  border-radius:10px;
   cursor:pointer;
   user-select:none;
+  margin:2px;
 }
-.cell:nth-child(7n){border-right:none}
 .cell.empty{cursor:default;background:rgba(0,0,0,.06)}
 .day{font-weight:800;font-size:15px;padding-right:52px}
 .tag{
   position:absolute;
-  right:6px;
-  top:6px;
+  left:6px;
+  bottom:6px;
   max-width:calc(100% - 26px);
   font-size:10px;
   line-height:1.1;
@@ -88,7 +89,7 @@ a{color:inherit}
 .mark{
   position:absolute;
   right:6px;
-  bottom:6px;
+  top:6px;
   width:18px;height:18px;
   border-radius:6px;
   background:rgba(96,165,250,.18);
@@ -123,7 +124,12 @@ a{color:inherit}
     page-break-after: always;
   }
   .wd{color:var(--muted)}
-  .cell{min-height:58px}
+  .cell{
+    min-height:60px;
+    aspect-ratio:1 / 0.95;
+    border-radius:9px;
+    margin:2px;
+  }
   .monthNote{color:var(--muted)}
   .btn{display:none}
 }

@@ -5,8 +5,8 @@
   --text:#e5e7eb;
   --line:#243042;
   --accent:#60a5fa;
-  --double:#fde68a; /* 双薪 */
-  --triple:#fca5a5; /* 三薪 */
+  --double:#fde68a;
+  --triple:#fca5a5;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -35,36 +35,6 @@ a{color:inherit}
 .btn.primary{background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.35)}
 .legend{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted)}
 .dot{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px;border:1px solid rgba(255,255,255,.25)}
-.salaryPanel{
-  margin-bottom:14px;
-  background: rgba(17,24,39,.7);
-  border: 1px solid rgba(36,48,66,.9);
-  border-radius: 14px;
-  padding: 12px;
-}
-.salaryGrid{display:grid;grid-template-columns:1fr;gap:10px}
-@media (min-width: 640px){.salaryGrid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-.field{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:12px}
-.input{
-  width:100%;
-  background:#0b1220;
-  border:1px solid var(--line);
-  border-radius:10px;
-  color:var(--text);
-  padding:8px 10px;
-  font-size:14px;
-}
-.salaryHint{margin-top:10px;font-size:13px;font-weight:700;color:#c7d2fe}
-.settlementInfo{margin-top:8px;font-size:12px;color:var(--muted)}
-.warn{
-  margin-top:8px;
-  font-size:12px;
-  color:#fca5a5;
-  border:1px dashed rgba(252,165,165,.35);
-  padding:8px 10px;
-  border-radius:10px;
-  background: rgba(127,29,29,.25);
-}
 .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:14px}
 @media (min-width: 860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 .card{
@@ -81,8 +51,8 @@ a{color:inherit}
 .wd{padding:8px 0;text-align:center;color:var(--muted);font-size:12px;border-bottom:1px solid rgba(36,48,66,.65)}
 .cell{
   position:relative;
-  min-height:58px;
-  padding:10px 8px 8px;
+  min-height:70px;
+  padding:8px 8px 8px;
   border-right:1px solid rgba(36,48,66,.35);
   border-bottom:1px solid rgba(36,48,66,.35);
   cursor:pointer;
@@ -91,16 +61,21 @@ a{color:inherit}
 .cell:nth-child(7n){border-right:none}
 .cell.empty{cursor:default;background:rgba(0,0,0,.06)}
 .day{font-weight:800;font-size:15px}
+.lunar{font-size:11px;color:var(--muted);margin-top:2px}
 .tag{
   position:absolute;
   left:8px;
-  bottom:7px;
-  font-size:11px;
-  padding:2px 6px;
+  bottom:6px;
+  max-width:calc(100% - 16px);
+  font-size:10px;
+  padding:1px 5px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.25);
   color:#111827;
   font-weight:800;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .tag.double{background:var(--double)}
 .tag.triple{background:var(--triple)}
@@ -117,32 +92,27 @@ a{color:inherit}
 }
 .cell.double{background:linear-gradient(0deg, rgba(253,230,138,.30), rgba(253,230,138,.06))}
 .cell.triple{background:linear-gradient(0deg, rgba(252,165,165,.30), rgba(252,165,165,.06))}
-.payrollRow{
-  border-top:1px solid rgba(36,48,66,.75);
-  padding:10px 12px;
-  display:flex;
-  gap:10px;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
+
+@media print {
+  @page { size: A4 portrait; margin: 10mm; }
+  body{background:#fff;color:#111}
+  .container{max-width:none;padding:0}
+  .no-print{display:none !important}
+  .print-grid{display:block}
+  .print-card{
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom:10mm;
+    border:1px solid #ddd;
+    box-shadow:none;
+    background:#fff;
+    color:#111;
+  }
+  .print-card:nth-of-type(2n){
+    break-after: page;
+    page-break-after: always;
+  }
+  .wd,.lunar{color:#333}
+  .cell{min-height:62px}
+  .btn{display:none}
 }
-.payrollText{font-size:12px;color:var(--muted)}
-.paidBadge{
-  font-size:12px;
-  font-weight:700;
-  color:#bbf7d0;
-  background:rgba(20,83,45,.35);
-  border:1px solid rgba(134,239,172,.3);
-  border-radius:999px;
-  padding:4px 8px;
-}
-.pendingBadge{
-  font-size:12px;
-  color:#fcd34d;
-  background:rgba(133,77,14,.3);
-  border:1px solid rgba(250,204,21,.3);
-  border-radius:999px;
-  padding:4px 8px;
-}
-.footer{margin-top:16px;color:var(--muted);font-size:12px;line-height:1.5}
-.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0b1220;border:1px solid var(--line);padding:2px 6px;border-radius:8px}

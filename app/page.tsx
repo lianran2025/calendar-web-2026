@@ -31,6 +31,14 @@ function shortFestivalName(name: string) {
 
 export default function Page() {
   const [marks, setMarks] = useState<Marks>({});
+  const months = useMemo(() => Array.from({ length: 11 }, (_, i) => i + 2), []);
+  const monthPages = useMemo(() => {
+    const pages: number[][] = [];
+    for (let i = 0; i < months.length; i += 2) {
+      pages.push(months.slice(i, i + 2));
+    }
+    return pages;
+  }, [months]);
 
   useEffect(() => {
     setMarks(safeParse(localStorage.getItem(STORAGE_KEY)));
@@ -117,8 +125,12 @@ export default function Page() {
       </div>
 
       <section className="grid print-grid">
-        {Array.from({ length: 11 }, (_, i) => i + 2).map((m) => (
-          <MonthCard key={m} month={m} marks={marks} onToggle={toggle} />
+        {monthPages.map((pageMonths, pageIndex) => (
+          <div key={pageIndex} className="print-page">
+            {pageMonths.map((m) => (
+              <MonthCard key={m} month={m} marks={marks} onToggle={toggle} />
+            ))}
+          </div>
         ))}
       </section>
     </main>

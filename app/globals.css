@@ -111,7 +111,10 @@ a{color:inherit}
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  body{background:var(--bg) !important;color:var(--text) !important}
+  body{
+    background:#eef2f7 !important;
+    color:var(--text) !important;
+  }
   .container{max-width:none;padding:0}
   .no-print{display:none !important}
   .print-grid{display:block}
@@ -134,18 +137,23 @@ a{color:inherit}
     page-break-inside: avoid;
     width:102mm;
     margin:0;
-    border: 1px solid rgba(36,48,66,.9);
-    box-shadow: 0 8px 24px rgba(0,0,0,.2);
-    background: rgba(17,24,39,.9);
+    border: 1px solid #0f2340;
+    box-shadow: 0 6px 16px rgba(15,35,64,.25);
+    background: #0b1830;
     color:var(--text);
   }
-  .wd{color:var(--muted)}
+  .wd{
+    color:#aab7c8;
+    border-bottom:1px solid rgba(138,161,190,.55);
+  }
   .cell{
     min-height:0;
     aspect-ratio:1 / 1;
     border-radius:10px;
     margin:1px;
     padding:3px 3px 3px;
+    border:1px solid rgba(138,161,190,.55);
+    background:#0c1f3c;
   }
   .wd{font-size:9px;padding:4px 0}
   .day{
@@ -166,10 +174,14 @@ a{color:inherit}
     font-size:8px;
   }
   .monthNote{
-    color:var(--muted);
+    color:#b8c5d6;
     font-size:9px;
     max-width:60%;
   }
-  .cardTop{padding:8px 10px}
+  .cardTop{
+    padding:8px 10px;
+    border-bottom:1px solid rgba(138,161,190,.55);
+    background:#0a1630;
+  }
   .btn{display:none}
 }
